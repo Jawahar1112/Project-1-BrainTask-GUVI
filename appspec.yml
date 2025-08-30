@@ -8,3 +8,4 @@ resources:
         fileContents:
           - deployment.yaml
           - service.yaml
+          
