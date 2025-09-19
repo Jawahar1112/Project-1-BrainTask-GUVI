@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: brain-tasks-static-app-service
+  labels:
+    app: brain-tasks-static-app
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: brain-tasks-static-app

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brain-tasks-static-app
+  labels:
+    app: brain-tasks-static-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: brain-tasks-static-app
+  template:
+    metadata:
+      labels:
+        app: brain-tasks-static-app
+    spec:
+      containers:
+      - name: brain-tasks-static-app
+        image: 717279696773.dkr.ecr.us-west-2.amazonaws.com/brain-tasks-static-app
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi" 
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
