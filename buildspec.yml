@@ -30,4 +30,5 @@ artifacts:
   files:
     - imagedefinitions.json
     - k8s/*
+    - scripts/**/*
     - appspec.yml
